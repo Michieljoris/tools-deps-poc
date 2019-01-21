@@ -1,0 +1,68 @@
+{
+ ;; tasks
+
+ :revolt.task/aot    {:extra-namespaces [clout.core
+                                         mount.core
+                                         failjure.core
+                                         clojure.tools.reader.reader-types
+                                         clojure.tools.logging.impl]}
+
+ :revolt.task/info   {:name "tryout"
+                      :package tryout.tools.deps
+                      :version "0.0.1"
+                      :description "Sample project to see revolt in action."}
+
+ :revolt.task/test   {:report :pretty}
+
+ :revolt.task/sass   {:source-path "assets/styles"
+                      :output-dir "public/styles"}
+
+ :revolt.task/assets {:assets-paths ["assets"]
+                      :exclude-paths ["assets/styles"]
+                      :output-dir "assets"}
+
+ :revolt.task/codox  {:source-paths ["src"]
+                      :source-uri "http://github.com/mbuczko/revolt-edge/blob/{version}/{filepath}#L{line}"
+                      :namespaces [edge.http
+                                   edge.middleware]}
+
+ :revolt.task/cljs   {:compiler {:output-dir "public/scripts/out"
+                                 :asset-path "/scripts/out"
+                                 :preloads [devtools.preload]
+                                 :modules {:cljs-base {:output-to "public/scripts/base.js"}
+                                           ;; :vendor    {:entries #{re-frame.core}
+                                           ;;             :output-to "scripts/vendor.js"}
+                                           :main      {:entries #{frontend.main}
+                                                       :output-to "public/scripts/main.js"}}
+                                 ;; :foreign-libs [{:file "assets/scripts/antd.inc.js"
+                                 ;;                 :file-min "assets/scripts/antd.min.inc.js"
+                                 ;;                 :provides ["cljsjs.antd"]
+                                 ;;                 :requires ["cljsjs.react"
+                                 ;;                            "cljsjs.react.dom"
+                                 ;;                            "cljsjs.moment"]}]
+                                 }
+                      :builds [{:id "main-ui"
+                                :source-paths ["src"]}]}
+
+ :revolt.task/capsule {:exclude-paths #{"test" "src/cljs"}
+                       :output-jar "dist/edge.jar"
+                       :capsule-type :thin
+                       :main "frontend.main"
+                       :min-java-version "1.8.0"
+                       :jvm-args "-server"
+                       :system-properties "ENV=prod"
+                       :caplets {"MavenCapsule" [["Repositories" "central clojars(https://repo.clojars.org/)"]
+                                                 ["Allow-Snapshots" "true"]]}}
+
+ ;; plugins
+
+ :revolt.plugin/nrepl {:port 5600}
+
+ :revolt.plugin/rebel {:init-ns "core"
+                       :init-banner "Welcome to the rebel"}
+
+ :revolt.plugin/watch {:on-change {:revolt.task/sass "glob:assets/styles/*.scss"
+                                   :revolt.task/test "glob:**/*.clj"}}
+
+ :revolt.plugin/figwheel {:client-print-to [:console]
+                          :builds ["main-ui"]}}
