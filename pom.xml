@@ -12,24 +12,54 @@
       <version>1.10.0</version>
     </dependency>
     <dependency>
-      <groupId>ring</groupId>
-      <artifactId>ring</artifactId>
-      <version>1.6.3</version>
+      <groupId>com.taoensso</groupId>
+      <artifactId>encore</artifactId>
+      <version>2.96.0</version>
     </dependency>
     <dependency>
-      <groupId>lambdaisland</groupId>
-      <artifactId>ring.middleware.logger</artifactId>
-      <version>0.5.1</version>
+      <groupId>ring</groupId>
+      <artifactId>ring-defaults</artifactId>
+      <version>0.3.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>tools.namespace</artifactId>
+      <version>0.3.0-alpha4</version>
+    </dependency>
+    <dependency>
+      <groupId>clj-time</groupId>
+      <artifactId>clj-time</artifactId>
+      <version>0.15.1</version>
+    </dependency>
+    <dependency>
+      <groupId>ring-middleware-format</groupId>
+      <artifactId>ring-middleware-format</artifactId>
+      <version>0.7.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.taoensso</groupId>
+      <artifactId>timbre</artifactId>
+      <version>4.10.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>tools.reader</artifactId>
+      <version>1.3.2</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>ring</groupId>
+      <artifactId>ring-core</artifactId>
+      <version>1.7.1</version>
     </dependency>
     <dependency>
       <groupId>http-kit</groupId>
       <artifactId>http-kit</artifactId>
       <version>2.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>clj-time</groupId>
-      <artifactId>clj-time</artifactId>
-      <version>0.14.2</version>
     </dependency>
   </dependencies>
   <build>

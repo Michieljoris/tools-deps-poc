@@ -5,15 +5,18 @@
    [ring.middleware.resource :refer [wrap-resource]]
    [ring.middleware.content-type :refer [wrap-content-type]]
    [ring.middleware.not-modified :refer [wrap-not-modified]]
-   [clojure.tools.logging :as log]
    ;; [ring.middleware.logger :as logger]
-   [ring.middleware.file :refer [wrap-file]]
+   ;; [ring.middleware.file :refer [wrap-file]]
    ;; [digicheck.common.util :as du]
+
+   [taoensso.timbre :as timbre]
    [clj-time.core :as t]
    [clj-time.format :as f]
-   [clojure.java.io :as io]))
+   ;; [clojure.java.io :as io]
+   ))
 
-(log/info  "Hello from core!!!")
+;; (timbre/set-level! :info)
+;; (timbre/info "Hello from core!!!")
 
 (defn time-str
   "Returns a string representation of a datetime in the local time zone."
@@ -42,13 +45,16 @@
        ;; :warn  (fn [x] (/warn x))
        ))
 
-(defn serve! []
-  (println "Hello world, the time is" (time-str (t/now)))
+(defn -main []
+  (println "hello with server")
+  ;; (println "Hello world, the time is" (time-str (t/now)))
   ;; (println (du/includes? [1 2 3] 1))
-  (run-server handler options))
+  (timbre/info "Hello from timbre!!")
+  (run-server handler options)
+  )
 
 
-(serve!)
+;; (serve!)
 ;; (defn -main [& args]
 ;;   (println "Hello World!"))
 
