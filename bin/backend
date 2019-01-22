@@ -1,0 +1,1 @@
+clj -A:revolt:dev:nrepl:slf4j -p watch,rebel -t sass

@@ -77,13 +77,16 @@
                                                                    :sha "9e8c38ad99051bd9c4fdab103317ac2aafd753e9"}
                                  ;; revolt-extra {:local/root "/home/mj/src/clojure/revolt-extra"}
                                  }}
-
-           :dev {:extra-deps  {
+           :nrepl {:extra-deps {
+                                
                                ;; nrepl -------------------
                                com.cemerick/pomegranate {:mvn/version "1.1.0"}
                                cider/cider-nrepl {:mvn/version "0.20.0"}
                                refactor-nrepl {:mvn/version "2.4.0"}
 
+                                }}
+
+           :dev {:extra-deps  {
                                ;; dev tools-----------------------
                                com.bhauman/figwheel-main {:mvn/version "0.2.0"}
                                cider/piggieback {:mvn/version "0.3.10"}

@@ -1,6 +1,6 @@
 # Run in dev mode
 
-    clj -A:revolt:dev:cljs:slf4j -p watch,nrepl-piggyback,figwheel,rebel -t clean,sass,test
+    clj -A:revolt:dev:nrepl:cljs:slf4j -p watch,nrepl-piggyback,figwheel,rebel -t clean,sass,test
 
 # Uberjar
 
@@ -11,6 +11,20 @@
      -A:native-image --graalvm-home ~/opt/graalvm
 
 
+# Run shadow-cljs and revolt together
+
+This will run the backend server and compile scss:
+
+    clj -A:revolt:dev:slf4j -p watch,rebel -t sass
+    
+The app's backend serves at http://localhost:333/index.html
+    
+This will compile cljs:
+ 
+    shadow-cljs watch main
+    
+ And shadow-cljs serves the app at http://localhost:9001 with a bare ring server.
+ 
 # TODO
 
 - Using a (private?) git repo seems to not go down well with capsule task

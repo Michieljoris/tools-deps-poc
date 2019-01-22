@@ -1,0 +1,12 @@
+;; shadow-cljs configuration
+{:deps {:aliases [:cljs :nrepl]}
+ :nrepl {:port 9000
+         :middleware [refactor-nrepl.middleware/wrap-refactor]}
+ :builds {:main {:output-dir "target/assets/public/scripts"
+                 :asset-path "scripts"
+                 :target :browser
+                 :modules {:main {:init-fn frontend.main/main!}}
+                 :devtools {;; :after-load app.main/reload!
+                            :http-root "target/assets/public"
+                            :http-resource-root "public"
+                            :http-port 9001}}}}

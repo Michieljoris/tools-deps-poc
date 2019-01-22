@@ -8,3 +8,4 @@ target/
 .rebel_readline_history
 dist/
 out/
+.shadow-cljs/
