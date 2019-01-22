@@ -1,7 +1,12 @@
-(ns ^:figweel-load frontend.main)
+(ns ^:figweel-load frontend.main
+  (:require [weasel.repl :as repl])
+  )
+
+(when-not (repl/alive?)
+  (repl/connect "ws://localhost:9001"))
 
 (set! *warn-on-infer* true)
 
 (enable-console-print!)
 
-(println "Hello from frontend.main!!!!")
+(println "Hello from frontend.main!!!! again!! bla foo")

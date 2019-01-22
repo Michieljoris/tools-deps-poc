@@ -8,6 +8,7 @@
    ;; [ring.middleware.logger :as logger]
    ;; [ring.middleware.file :refer [wrap-file]]
    ;; [digicheck.common.util :as du]
+   [utils.foo :refer [foo]]
 
    [taoensso.timbre :as timbre]
    [clj-time.core :as t]
@@ -49,7 +50,8 @@
   (println "hello with server")
   ;; (println "Hello world, the time is" (time-str (t/now)))
   ;; (println (du/includes? [1 2 3] 1))
-  (timbre/info "Hello from timbre!!")
+  (timbre/info "Hello from timbre!!" (foo 1 2))
+
   (run-server handler options)
   )
 

@@ -1,11 +1,12 @@
 {
  ;; tasks
 
- :revolt.task/aot    {:extra-namespaces [clout.core
-                                         mount.core
-                                         failjure.core
+ :revolt.task/aot    {:extra-namespaces [;; clout.core
+                                         ;; mount.core
+                                         ;; failjure.core
                                          clojure.tools.reader.reader-types
-                                         clojure.tools.logging.impl]}
+                                         ;; clojure.tools.logging.impl
+                                         ]}
 
  :revolt.task/info   {:name "tryout"
                       :package tryout.tools.deps
@@ -41,13 +42,13 @@
                                  ;;                            "cljsjs.react.dom"
                                  ;;                            "cljsjs.moment"]}]
                                  }
-                      :builds [{:id "main-ui"
+                      :builds [{:id "main"
                                 :source-paths ["src"]}]}
 
  :revolt.task/capsule {:exclude-paths #{"test" "src/cljs"}
                        :output-jar "dist/edge.jar"
-                       :capsule-type :thin
-                       :main "frontend.main"
+                       :capsule-type :thick
+                       :main "core"
                        :min-java-version "1.8.0"
                        :jvm-args "-server"
                        :system-properties "ENV=prod"
@@ -57,6 +58,7 @@
  ;; plugins
 
  :revolt.plugin/nrepl {:port 5600}
+ :revolt.plugin/nrepl2 {:port 5700}
 
  :revolt.plugin/rebel {:init-ns "core"
                        :init-banner "Welcome to the rebel"}
@@ -65,4 +67,4 @@
                                    :revolt.task/test "glob:**/*.clj"}}
 
  :revolt.plugin/figwheel {:client-print-to [:console]
-                          :builds ["main-ui"]}}
+                          :builds ["main"]}}

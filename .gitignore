@@ -6,3 +6,4 @@ tmp/
 .nrepl-port
 target/
 .rebel_readline_history
+dist/

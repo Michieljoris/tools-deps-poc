@@ -16,7 +16,10 @@
   ;; Paths
   ;;   Directories in the current project to include in the classpath
 
-  :paths ["src" "resources" "assets" "test"]
+  :paths ["src" ;;clj, cljc and cljs files
+          "resources" ;;public dir for server and config files
+          "assets" ;;scss stylesheets and js scripts
+          "test"]
 
   ;; External dependencies
 
@@ -28,23 +31,17 @@
          ring/ring-defaults {:mvn/version "0.3.2"}
          ring-middleware-format {:mvn/version "0.7.3"}
 
-        com.taoensso/encore      {:mvn/version "2.96.0"}
+        ;; com.taoensso/encore      {:mvn/version "2.96.0"}
         com.taoensso/timbre {:mvn/version "4.10.0"}
-        ;;This lib reroutes slf4j log output to timbre. To use this and
-        ;;configure it in time probably need to add/make a task for revolt that
-        ;;sets the level early enough. Setting it on cmd doesn't seem to work:
-        ;;export TIMBRE_LEVEL=:info
-        ;;com.fzakaria/slf4j-timbre {:mvn/version "0.3.12"}
-        ;;This uses config in resources/logback.xml
-        ch.qos.logback/logback-classic {:mvn/version "1.2.3"}
         http-kit {:mvn/version "2.3.0"}
         clj-time               {:mvn/version "0.15.1"}
         ;; github-digitalechecklisten/dc-util
         ;;  {:git/url "git@github.com:digitalechecklisten/dc-util" :sha "f85c83b54059dbb43ad3a87d6771d5cf9964ae39"}
+
         }
 
   ;; Aliases
-	;;   resolve-deps aliases (-R) affect dependency resolution, options:
+    ;;   resolve-deps aliases (-R) affect dependency resolution, options:
 	;;     :extra-deps - specifies extra deps to add to :deps
 	;;     :override-deps - specifies a coordinate to use instead of that in :deps
 	;;     :default-deps - specifies a coordinate to use for a lib if one isn't found
@@ -52,19 +49,60 @@
 	;;     :extra-paths - vector of additional paths to add to the classpath
 	;;     :classpath-overrides - map of lib to path that overrides the result of resolving deps
 
- :aliases {:revolt {:extra-deps  {defunkt/revolt {:mvn/version "1.2.0"}}
-                    ;;This is where compiled assets suc as cljs and scss go. So for
-                    ;;the server to find them this dir needs to be added to the
-                    ;;classpath:
-                    :extra-paths ["target/assets"]
-                    :main-opts   ["-m" "revolt.bootstrap"
-                                  "-c" "revolt.edn"]}
+ :aliases {
+           ;; :revolt-jar {:extra-deps  {defunkt/revolt {:mvn/version "1.2.0"}}
+           ;;          ;;This is where compiled assets suc as cljs and scss go. So for
+           ;;          ;;the server to find them this dir needs to be added to the
+           ;;          ;;classpath:
+           ;;          :extra-paths ["target/assets"]
+           ;;          :main-opts   ["-m" "revolt.bootstrap"
+           ;;                        "-c" "revolt.edn"]}
+
+           ;; :my-revolt {:extra-deps  {my-revolt {:local/root "/home/mj/src/clojure/playground/my-revolt"}}
+           ;;             ;;This is where compiled assets suc as cljs and scss go. So for
+           ;;             ;;the server to find them this dir needs to be added to the
+           ;;             ;;classpath:
+           ;;             :extra-paths ["target/assets"]
+           ;;             :main-opts   ["-m" "revolt.bootstrap"
+           ;;                           "-c" "revolt.edn"]}
+
+           ;; :revolt {:extra-deps  {revolt {:local/root "/home/mj/src/clojure/revolt"}}
+           ;;                    ;;This is where compiled assets suc as cljs and scss go. So for
+           ;;                    ;;the server to find them this dir needs to be added to the
+           ;;                    ;;classpath:
+           ;;                    :extra-paths ["target/assets"]
+           ;;                    :main-opts   ["-m" "revolt.my-bootstrap"
+           ;;                                  "-c" "revolt.edn"]}
+
+           :revolt {:extra-deps  {github-michieljoris/revolt {:git/url "https://github.com/Michieljoris/revolt.git"
+                                                              :sha "b13af925978395fa0fede469ed236699b21add8f"}}
+                              ;;This is where compiled assets suc as cljs and scss go. So for
+                              ;;the server to find them this dir needs to be added to the
+                              ;;classpath:
+                              :extra-paths ["target/assets" "src-dev"]
+                              :main-opts   ["-m" "revolt-bootstrap"
+                                            "-c" "revolt.edn"]}
+
+           ;; :revolt-plugins {:extra-deps {revolt-plugins {:local/root "/home/mj/src/clojure/playground/revolt-plugins"}}
+           ;;                  ;; :main-opts ["-m" "nrepl2"]
+           ;;                  }
+
+           :logging {:extra-deps {
+                                  ;;This lib reroutes slf4j log output to timbre. To use this and
+                                  ;;configure it in time probably need to add/make a task for revolt that
+                                  ;;sets the level early enough. Setting it on cmd doesn't seem to work:
+                                  ;;export TIMBRE_LEVEL=:info
+                                  ;;com.fzakaria/slf4j-timbre {:mvn/version "0.3.12"}
+                                  ;;This uses config in resources/logback.xml
+                                  ;; ch.qos.logback/logback-classic {:mvn/version "1.2.3"}
+                                  binaryage/devtools {:mvn/version "0.9.10"}
+                                  }}
 
            ;; dependencies for clojurescript
            :cljs {:extra-deps {org.clojure/clojurescript {:mvn/version "1.10.439"}
-                               binaryage/devtools {:mvn/version "0.9.10"}
-                               com.bhauman/figwheel-main {:mvn/version "0.2.0"}}
-                      }
+                               com.bhauman/figwheel-main {:mvn/version "0.2.0"}
+                               cider/piggieback {:mvn/version "0.3.10"}
+                               weasel {:mvn/version "0.7.0"}}}
 
            ;; dependencies for packaging tasks
            :pack {:extra-deps {co.paralleluniverse/capsule {:mvn/version "1.0.3"}
@@ -78,7 +116,8 @@
                      {luchiniatwork/cambada {:mvn/version "1.0.0"}}
                      :main-opts ["-m" "cambada.uberjar"
                                  "-m" "core"
-                                 "--app-version" "0.5.3"]}
+                                 "--app-version" "0.1.0"
+                                 ]}
            :native-image {:extra-deps
                           {luchiniatwork/cambada {:mvn/version "1.0.0"}}
                           :main-opts ["-m" "cambada.native-image"
