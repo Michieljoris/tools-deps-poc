@@ -14,7 +14,8 @@
    [clj-time.core :as t]
    [clj-time.format :as f]
    ;; [clojure.java.io :as io]
-   ))
+   )
+  )
 
 ;; (timbre/set-level! :info)
 ;; (timbre/info "Hello from core!!!")
@@ -51,7 +52,9 @@
   ;; (println (du/includes? [1 2 3] 1))
   ;; (timbre/info "Hello from timbre!!" (foo 1 2))
 
-  (run-server handler options))
+  (println "from -main!!")
+  (run-server handler options)
+  )
 
 (defn serve! []
   (timbre/info "Running app server")

@@ -1,11 +1,11 @@
 # Run in dev mode
 
-    clj -A:dev:slf4j -p watch,nrepl-piggyback,figwheel,rebel -t clean,sass,test
+    clj -A:revolt:dev:cljs:slf4j -p watch,nrepl-piggyback,figwheel,rebel -t clean,sass,test
 
 # Uberjar
 
-    clj -A:uberjar
-    java -jar target/tools-deps-tryout-0.1.0-standalone.jar 
+    clj -A:revolt:pack:cljs:slf4j: -t clean,info,sass,cljs:compiler.optimizations=advanced,capsule
+    java -jar dist/app.jar
 
 # graalvm native-image
      -A:native-image --graalvm-home ~/opt/graalvm

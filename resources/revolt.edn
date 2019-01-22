@@ -20,7 +20,8 @@
 
  :revolt.task/assets {:assets-paths ["assets"]
                       :exclude-paths ["assets/styles"]
-                      :output-dir "assets"}
+                      :public-path "public/"
+                      }
 
  :revolt.task/codox  {:source-paths ["src"]
                       :source-uri "http://github.com/mbuczko/revolt-edge/blob/{version}/{filepath}#L{line}"
@@ -46,8 +47,8 @@
                                 :source-paths ["src"]}]}
 
  :revolt.task/capsule {:exclude-paths #{"test" "src/cljs"}
-                       :output-jar "dist/edge.jar"
-                       :capsule-type :thick
+                       :output-jar "dist/app.jar"
+                       :capsule-type :fat
                        :main "core"
                        :min-java-version "1.8.0"
                        :jvm-args "-server"

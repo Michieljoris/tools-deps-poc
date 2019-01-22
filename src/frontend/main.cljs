@@ -2,6 +2,7 @@
   (:require [weasel.repl :as repl])
   )
 
+;;TODO: find way to exclude weasel from prod
 (when-not (repl/alive?)
   (repl/connect "ws://localhost:9001"))
 
