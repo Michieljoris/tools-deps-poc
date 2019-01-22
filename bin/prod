@@ -1,0 +1,1 @@
+clj -A:revolt:pack:cljs:slf4j: -t clean,info,sass,cljs:compiler.optimizations=advanced,capsule; java -jar dist/app.jar

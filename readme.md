@@ -9,3 +9,12 @@
 
 # graalvm native-image
      -A:native-image --graalvm-home ~/opt/graalvm
+
+
+# TODO
+
+- Using a (private?) git repo seems to not go down well with capsule task
+;; ERROR | Error while creating a jar file: Some of dependecies have no :mvn/version assigned!
+;;Perhaps it's needs a deps.edn?
+
+- Exclude weasel from js prod build somehow
