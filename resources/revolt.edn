@@ -61,7 +61,7 @@
  :revolt.plugin/nrepl-piggyback {:port 5700}
 
  :revolt.plugin/rebel {:init-ns "core"
-                       :init-banner "Welcome to the rebel"}
+                       :init-banner "Welcome to the rebel\nStart an nrepl session and run (user/cljs-repl) for a cljs repl"}
 
  :revolt.plugin/watch {:on-change {:revolt.task/sass "glob:assets/styles/*.scss"
                                    :revolt.task/test "glob:**/*.clj"}}
