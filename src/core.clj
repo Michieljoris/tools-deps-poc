@@ -47,16 +47,12 @@
        ))
 
 (defn -main []
-  (println "hello with server")
   ;; (println "Hello world, the time is" (time-str (t/now)))
   ;; (println (du/includes? [1 2 3] 1))
-  (timbre/info "Hello from timbre!!" (foo 1 2))
+  ;; (timbre/info "Hello from timbre!!" (foo 1 2))
 
-  (run-server handler options)
-  )
+  (run-server handler options))
 
-
-;; (serve!)
-;; (defn -main [& args]
-;;   (println "Hello World!"))
-
+(defn serve! []
+  (timbre/info "Running app server")
+  (run-server handler options))

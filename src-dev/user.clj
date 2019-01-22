@@ -1,6 +1,7 @@
 (ns user
   (:require  [weasel.repl.websocket]
-             [cider.piggieback]))
+             [cider.piggieback]
+             [core :as core]))
 
 (def foo 123)
 
@@ -8,3 +9,5 @@
 
 (defn cljs-repl []
   (cider.piggieback/cljs-repl weasel-repl-env))
+
+(core/serve!)

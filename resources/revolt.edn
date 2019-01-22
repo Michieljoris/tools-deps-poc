@@ -58,7 +58,7 @@
  ;; plugins
 
  :revolt.plugin/nrepl {:port 5600}
- :revolt.plugin/nrepl2 {:port 5700}
+ :revolt.plugin/nrepl-piggyback {:port 5700}
 
  :revolt.plugin/rebel {:init-ns "core"
                        :init-banner "Welcome to the rebel"}

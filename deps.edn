@@ -19,24 +19,25 @@
   :paths ["src" ;;clj, cljc and cljs files
           "resources" ;;public dir for server and config files
           "assets" ;;scss stylesheets and js scripts
-          "test"]
+         ]
 
   ;; External dependencies
 
  :deps {org.clojure/clojure    {:mvn/version "1.10.0"}
-         org.clojure/tools.namespace {:mvn/version "0.3.0-alpha4"}
-         org.clojure/tools.reader {:mvn/version "1.3.2"}
 
-         ring/ring-core {:mvn/version "1.7.1"}
-         ring/ring-defaults {:mvn/version "0.3.2"}
-         ring-middleware-format {:mvn/version "0.7.3"}
+        ring/ring-core {:mvn/version "1.7.1"}
+        ring/ring-defaults {:mvn/version "0.3.2"}
+        ring-middleware-format {:mvn/version "0.7.3"}
 
         ;; com.taoensso/encore      {:mvn/version "2.96.0"}
-        com.taoensso/timbre {:mvn/version "4.10.0"}
         http-kit {:mvn/version "2.3.0"}
         clj-time               {:mvn/version "0.15.1"}
+
+        com.taoensso/timbre {:mvn/version "4.10.0"}
         ;; github-digitalechecklisten/dc-util
         ;;  {:git/url "git@github.com:digitalechecklisten/dc-util" :sha "f85c83b54059dbb43ad3a87d6771d5cf9964ae39"}
+
+
 
         }
 
@@ -50,59 +51,59 @@
 	;;     :classpath-overrides - map of lib to path that overrides the result of resolving deps
 
  :aliases {
-           ;; :revolt-jar {:extra-deps  {defunkt/revolt {:mvn/version "1.2.0"}}
-           ;;          ;;This is where compiled assets suc as cljs and scss go. So for
-           ;;          ;;the server to find them this dir needs to be added to the
-           ;;          ;;classpath:
-           ;;          :extra-paths ["target/assets"]
-           ;;          :main-opts   ["-m" "revolt.bootstrap"
-           ;;                        "-c" "revolt.edn"]}
+           :revolt {:extra-deps  {defunkt/revolt {:mvn/version "1.2.0"}}
+                        :extra-paths ["target/assets" "src-dev"]
+                        :main-opts   ["-m" "revolt.bootstrap"
+                                      "-c" "revolt.edn"]}
+           :dev {:extra-deps  {
+                               ;;Revolt -------------------
+                               ;;Adapted revolt that lets us call revolt/bootstrap from our own revolt-bootstrap ns
+                               github-michieljoris/revolt {:git/url "https://github.com/Michieljoris/revolt.git"
+                                                           :sha "d713b980a1658dd02ea839a80c2af85f48bf3559"}
+                               ;; revolt {:local/root "/home/mj/src/clojure/revolt"}
 
-           ;; :my-revolt {:extra-deps  {my-revolt {:local/root "/home/mj/src/clojure/playground/my-revolt"}}
-           ;;             ;;This is where compiled assets suc as cljs and scss go. So for
-           ;;             ;;the server to find them this dir needs to be added to the
-           ;;             ;;classpath:
-           ;;             :extra-paths ["target/assets"]
-           ;;             :main-opts   ["-m" "revolt.bootstrap"
-           ;;                           "-c" "revolt.edn"]}
+                               ;;extra plugins and tasks for revolt:
+                               github-michieljoris/revolt-extra {:git/url "https://github.com/Michieljoris/revolt-extra.git"
+                                                                 :sha "9e8c38ad99051bd9c4fdab103317ac2aafd753e9"}
+                               ;; revolt-extra {:local/root "/home/mj/src/clojure/revolt-extra"}
 
-           ;; :revolt {:extra-deps  {revolt {:local/root "/home/mj/src/clojure/revolt"}}
-           ;;                    ;;This is where compiled assets suc as cljs and scss go. So for
-           ;;                    ;;the server to find them this dir needs to be added to the
-           ;;                    ;;classpath:
-           ;;                    :extra-paths ["target/assets"]
-           ;;                    :main-opts   ["-m" "revolt.my-bootstrap"
-           ;;                                  "-c" "revolt.edn"]}
+                               ;; nrepl -------------------
+                               com.cemerick/pomegranate {:mvn/version "1.1.0"}
+                               cider/cider-nrepl {:mvn/version "0.20.0"}
+                               refactor-nrepl {:mvn/version "2.4.0"}
 
-           :revolt {:extra-deps  {github-michieljoris/revolt {:git/url "https://github.com/Michieljoris/revolt.git"
-                                                              :sha "b13af925978395fa0fede469ed236699b21add8f"}}
-                              ;;This is where compiled assets suc as cljs and scss go. So for
-                              ;;the server to find them this dir needs to be added to the
-                              ;;classpath:
-                              :extra-paths ["target/assets" "src-dev"]
-                              :main-opts   ["-m" "revolt-bootstrap"
-                                            "-c" "revolt.edn"]}
+                               ;; clojurscript -----------------------
+                               org.clojure/clojurescript {:mvn/version "1.10.439"}
+                               com.bhauman/figwheel-main {:mvn/version "0.2.0"}
+                               cider/piggieback {:mvn/version "0.3.10"}
+                               weasel {:mvn/version "0.7.0"}
+                               binaryage/devtools {:mvn/version "0.9.10"}
+                               org.clojure/tools.deps.alpha {:mvn/version "0.6.480"
+                                                             ;;tools.deps includes this nop, which
+                                                             ;;creates multiple bindings for slf4j if
+                                                             ;;you include another binding like logback-classic
+                                                             :exclusions [org.slf4j/slf4j-nop]}
+                               }
+                    ;;This is where compiled assets suc as cljs and scss go. So for
+                    ;;the server to find them target/assets needs to be added to the
+                    ;;classpath:
+                    :extra-paths ["target/assets" "src-dev" "test"]
+                    :main-opts   ["-m" "revolt-bootstrap"
+                                  "-c" "revolt.edn"]}
 
            ;; :revolt-plugins {:extra-deps {revolt-plugins {:local/root "/home/mj/src/clojure/playground/revolt-plugins"}}
            ;;                  ;; :main-opts ["-m" "nrepl2"]
            ;;                  }
 
-           :logging {:extra-deps {
-                                  ;;This lib reroutes slf4j log output to timbre. To use this and
-                                  ;;configure it in time probably need to add/make a task for revolt that
-                                  ;;sets the level early enough. Setting it on cmd doesn't seem to work:
-                                  ;;export TIMBRE_LEVEL=:info
-                                  ;;com.fzakaria/slf4j-timbre {:mvn/version "0.3.12"}
-                                  ;;This uses config in resources/logback.xml
-                                  ;; ch.qos.logback/logback-classic {:mvn/version "1.2.3"}
-                                  binaryage/devtools {:mvn/version "0.9.10"}
-                                  }}
-
-           ;; dependencies for clojurescript
-           :cljs {:extra-deps {org.clojure/clojurescript {:mvn/version "1.10.439"}
-                               com.bhauman/figwheel-main {:mvn/version "0.2.0"}
-                               cider/piggieback {:mvn/version "0.3.10"}
-                               weasel {:mvn/version "0.7.0"}}}
+           :slf4j {:extra-deps {
+                                ;;This lib reroutes slf4j log output to timbre. To use this and
+                                ;;configure it in time probably need to add/make a task for revolt that
+                                ;;sets the level early enough. Setting it on cmd doesn't seem to work:
+                                ;;export TIMBRE_LEVEL=:info
+                                ;;com.fzakaria/slf4j-timbre {:mvn/version "0.3.12"}
+                                ;;This uses config in resources/logback.xml
+                                ch.qos.logback/logback-classic {:mvn/version "1.2.3"}
+                                }}
 
            ;; dependencies for packaging tasks
            :pack {:extra-deps {co.paralleluniverse/capsule {:mvn/version "1.0.3"}

@@ -1,3 +1,7 @@
+# Run in dev mode
+
+    clj -A:dev:slf4j -p watch,nrepl-piggyback,figwheel,rebel -t clean,sass,test
+
 # Uberjar
 
     clj -A:uberjar
