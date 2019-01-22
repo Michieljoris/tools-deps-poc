@@ -25,6 +25,11 @@ This will compile cljs:
     
  And shadow-cljs serves the app at http://localhost:9001 with a bare ring server.
  
+# cljs repl
+
+Connect to the nrepl server from the editor. Then (user/cljs-repl) in when using
+revolt only. If also using shadow-cljs then https://shadow-cljs.github.io/docs/UsersGuide.html#_connect_the_javascript_environment
+ 
 # TODO
 
 - Using a (private?) git repo seems to not go down well with capsule task
