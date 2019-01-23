@@ -1,6 +1,9 @@
 (ns ^:figweel-load frontend.main
   (:require ;; [weasel.repl :as repl]
-    [components.material-ui]
+   [react :as react]
+   [react-dom :as react-dom]
+   [components.material-ui :as ui]
+
    )
   )
 
@@ -12,9 +15,19 @@
 
 (enable-console-print!)
 
-(println "Hello from frontend.main!!!! again!! bla foo ok ok")
+(println "Hello from frontend.main!!!!")
 
 (defn main! [& args]
   (println "In main! in frontend.main!! "))
 
 ;; (js/console.log "Foo" create-element)
+;; (js/console.log react-dom/render
+;;                 )
+
+(def mount (js/document.getElementById "container"))
+
+(def el (ui/mui-theme-provider
+         {:mui-theme (ui/get-mui-theme)}
+         (ui/raised-button {:label "Hello world"})))
+
+(react-dom/render el mount)
