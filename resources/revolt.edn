@@ -8,8 +8,8 @@
                                          ;; clojure.tools.logging.impl
                                          ]}
 
- :revolt.task/info   {:name "tryout"
-                      :package tryout.tools.deps
+ :revolt.task/info   {:name "tools.deps demo"
+                      :package tools.deps.demo
                       :version "0.0.1"
                       :description "Sample project to see revolt in action."}
 
@@ -30,12 +30,18 @@
 
  :revolt.task/cljs   {:compiler {:output-dir "public/scripts/out"
                                  :asset-path "/scripts/out"
+                                 :npm-deps false
+                                 :infer-externs true
                                  :preloads [devtools.preload]
                                  :modules {:cljs-base {:output-to "public/scripts/base.js"}
                                            ;; :vendor    {:entries #{re-frame.core}
                                            ;;             :output-to "scripts/vendor.js"}
                                            :main      {:entries #{frontend.main}
                                                        :output-to "public/scripts/main.js"}}
+                                 :foreign-libs [{:file "dist/index.bundle.js"
+                                                 :provides ["create-element" "react-dom"]
+                                                 :global-exports {create-element createElement
+                                                                  react-dom ReactDOM}}]
                                  ;; :foreign-libs [{:file "assets/scripts/antd.inc.js"
                                  ;;                 :file-min "assets/scripts/antd.min.inc.js"
                                  ;;                 :provides ["cljsjs.antd"]
@@ -43,6 +49,7 @@
                                  ;;                            "cljsjs.react.dom"
                                  ;;                            "cljsjs.moment"]}]
                                  }
+                      ;;Compiler config gets merged with each build
                       :builds [{:id "main"
                                 :source-paths ["src"]}]}
 
@@ -68,4 +75,5 @@
                                    :revolt.task/test "glob:**/*.clj"}}
 
  :revolt.plugin/figwheel {:client-print-to [:console]
+                          ;; :npm {:bundles {"dist/index.bundle.js" "src/webpack/index.js"}}
                           :builds ["main"]}}

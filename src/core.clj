@@ -7,7 +7,7 @@
    [ring.middleware.not-modified :refer [wrap-not-modified]]
    ;; [ring.middleware.logger :as logger]
    ;; [ring.middleware.file :refer [wrap-file]]
-   [digicheck.common.util :as du]
+   ;; [digicheck.common.util :as du]
    [utils.foo :refer [foo]]
 
    [taoensso.timbre :as timbre]

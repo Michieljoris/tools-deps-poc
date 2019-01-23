@@ -38,8 +38,8 @@
         ;;TODO: Using a (private?) git repo seems to not go down well with capsule task
         ;; ERROR | Error while creating a jar file: Some of dependecies have no :mvn/version assigned!
         ;;Perhaps it's needs a deps.edn?
-        github-digitalechecklisten/dc-util
-         {:git/url "git@github.com:digitalechecklisten/dc-util" :sha "f85c83b54059dbb43ad3a87d6771d5cf9964ae39"}
+        ;; github-digitalechecklisten/dc-util
+        ;;  {:git/url "git@github.com:digitalechecklisten/dc-util" :sha "f85c83b54059dbb43ad3a87d6771d5cf9964ae39"}
 
         org.clojure/tools.deps.alpha {:mvn/version "0.6.480"
                                       ;;tools.deps includes this nop, which
