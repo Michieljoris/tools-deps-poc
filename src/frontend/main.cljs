@@ -1,28 +1,21 @@
 (ns ^:figweel-load frontend.main
-  (:require ;; [weasel.repl :as repl]
+  (:require
+   [weasel.repl :as repl]
    [react :as react]
    [react-dom :as react-dom]
    [components.material-ui :as ui]
-
-   )
-  )
+   ))
 
 ;;TODO: find way to exclude weasel from prod
-;; (when-not (repl/alive?)
-;;   (repl/connect "ws://localhost:9001"))
+(when-not (repl/alive?)
+  (repl/connect "ws://localhost:9001"))
 
-;; (set! *warn-on-infer* true)
+(set! *warn-on-infer* true)
 
 (enable-console-print!)
 
-(println "Hello from frontend.main!!!!")
-
 (defn main! [& args]
   (println "In main! in frontend.main!! "))
-
-;; (js/console.log "Foo" create-element)
-;; (js/console.log react-dom/render
-;;                 )
 
 (def mount (js/document.getElementById "container"))
 

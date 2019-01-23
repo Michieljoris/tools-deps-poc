@@ -25,7 +25,7 @@ or
 
 This will run the backend server and compile scss:
 
-    clj -A:revolt:dev:slf4j -p watch,rebel -t sass
+    clj -A:revolt:nrepl:dev:slf4j -p watch,rebel -t sass
     
 The app's backend serves at http://localhost:333/index.html
     
