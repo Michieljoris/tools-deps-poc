@@ -1,6 +1,7 @@
 (ns ^:figweel-load frontend.main
   (:require ;; [weasel.repl :as repl]
-            [create-element])
+    [components.material-ui]
+   )
   )
 
 ;;TODO: find way to exclude weasel from prod
@@ -15,4 +16,5 @@
 
 (defn main! [& args]
   (println "In main! in frontend.main!! "))
-(js/console.log "Foo" create-element)
+
+;; (js/console.log "Foo" create-element)

@@ -1,1 +1,2 @@
+npx webpack
 clj -A:revolt:dev:nrepl:cljs:slf4j -p watch,nrepl-piggyback,figwheel,rebel -t clean,sass,test

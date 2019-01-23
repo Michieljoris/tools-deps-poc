@@ -1,0 +1,15 @@
+#+TITLE: TODO
+
+* TODO:
+  - replace app.main with app.core
+  - get websockets to bilby server working
+  - what to do with frontend macros? like defcmp and environment...
+* shadow-cljs links
+    https://shadow-cljs.github.io/docs/UsersGuide.html
+    https://github.com/thheller/shadow-cljs/issues/162
+    https://code.thheller.com/blog/shadow-cljs/2017/09/15/js-dependencies-going-forward.html
+    https://github.com/thheller/shadow-cljsjs
+    https://github.com/shadow-cljs/examples/blob/master/browser/src/demo/app.cljs
+    https://github.com/madvas/cljs-react-material-ui/blob/master/src/cljs_react_material_ui/core.cljs
+    https://github.com/clojure-emacs/cider/issues/2239
+    https://github.com/DogLooksGood/shadow-cljs-lein-cider-config

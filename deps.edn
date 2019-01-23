@@ -47,6 +47,11 @@
                                       ;;you include another binding like logback-classic
                                       :exclusions [org.slf4j/slf4j-nop]}
 
+
+
+        sablono {:mvn/version "0.8.4"}  ; Optional, just for HTML
+        ;; cljsjs/material-ui {:mvn/version "0.19.4-0"}
+
         ;;TODO: either include this here, or remove weasel require from prod code.
         weasel {:mvn/version "0.7.0"}
         }

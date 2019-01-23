@@ -39,9 +39,15 @@
                                            :main      {:entries #{frontend.main}
                                                        :output-to "public/scripts/main.js"}}
                                  :foreign-libs [{:file "dist/index.bundle.js"
-                                                 :provides ["create-element" "react-dom"]
-                                                 :global-exports {create-element createElement
-                                                                  react-dom ReactDOM}}]
+                                                 :provides ["react" "react-dom" "material-ui"
+                                                            "material-ui-styles"
+                                                            ]
+                                                 :global-exports {react React
+                                                                  react-dom ReactDOM
+                                                                  material-ui MaterialUI
+                                                                  material-ui-styles MaterialUIStyles
+                                                                  ;; raised-button RaisedButton
+                                                                  }}]
                                  ;; :foreign-libs [{:file "assets/scripts/antd.inc.js"
                                  ;;                 :file-min "assets/scripts/antd.min.inc.js"
                                  ;;                 :provides ["cljsjs.antd"]
