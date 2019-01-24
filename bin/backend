@@ -1,4 +1,4 @@
 cmd="npm install"
 echo $cmd;eval $cmd
-cmd="clj -A:revolt:dev:nrepl-piggyback:slf4j -p watch,rebel -t sass"
+cmd="clj -A:revolt:dev:nrepl:slf4j -p watch,rebel -t sass"
 echo $cmd;eval $cmd
