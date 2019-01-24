@@ -3,7 +3,7 @@
    [weasel.repl :as repl]
    [react :as react]
    [react-dom :as react-dom]
-   [components.material-ui :as ui]
+   [frontend.components.material-ui :as ui]
    ))
 
 ;;TODO: find way to exclude weasel from prod

@@ -1,11 +1,11 @@
-(ns components.material-ui
+(ns frontend.components.material-ui
   (:refer-clojure :exclude [list stepper])
   (:require [clojure.walk :refer [postwalk]]
             [sablono.util :refer [camel-case camel-case-keys]]
 
             [react :as react]
             [material-ui :as ui]
-            [material-ui-styles :as ui-styles]
+            ["material-ui/styles" :as ui-styles]
 
             [taoensso.timbre :as timbre]
             ))
