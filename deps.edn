@@ -73,9 +73,9 @@
            :revolt {:extra-deps {
                                  ;;Revolt -------------------
                                  ;;Adapted revolt that lets us call revolt/bootstrap from our own revolt-bootstrap ns
-                                 ;; github-michieljoris/revolt {:git/url "https://github.com/Michieljoris/revolt.git"
-                                 ;;                             :sha "221966a7122a2cd24f55c05a9c91b276191bee04"}
-                                 revolt {:local/root "/home/mj/src/clojure/revolt"}
+                                 github-michieljoris/revolt {:git/url "https://github.com/Michieljoris/revolt.git"
+                                                             :sha "221966a7122a2cd24f55c05a9c91b276191bee04"}
+                                 ;; revolt {:local/root "/home/mj/src/clojure/revolt"}
 
                                  ;;extra plugins and tasks for revolt:
                                  github-michieljoris/revolt-extra {:git/url "https://github.com/Michieljoris/revolt-extra.git"
