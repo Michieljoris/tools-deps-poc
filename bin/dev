@@ -1,2 +1,6 @@
-npx webpack
-clj -A:revolt:dev:nrepl:cljs:slf4j -p watch,nrepl-piggyback,figwheel,rebel -t clean,sass,test
+cmd="npm install"
+echo $cmd;eval $cmd
+cmd="npx webpack"
+echo $cmd;eval $cmd
+cmd="clj -A:revolt:dev:nrepl:cljs:slf4j -p watch,nrepl-piggyback,figwheel,rebel -t clean,sass,test"
+echo $cmd;eval $cmd

@@ -74,7 +74,9 @@
                                  ;;Revolt -------------------
                                  ;;Adapted revolt that lets us call revolt/bootstrap from our own revolt-bootstrap ns
                                  github-michieljoris/revolt {:git/url "https://github.com/Michieljoris/revolt.git"
-                                                             :sha "f48c0a2978d1648dc679531f5b7f9e9303b19416"}
+                                                             :tag "fork-0.1.0"
+                                                             :sha "f48c0a2978d1648dc679531f5b7f9e9303b19416"
+                                                             }
                                  ;; revolt {:local/root "/home/mj/src/clojure/revolt"}
 
                                  ;;extra plugins and tasks for revolt:
